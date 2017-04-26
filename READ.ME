@@ -1,0 +1,10 @@
+{ClassPathXmlApplicationContext, FileSystemXmlApplicationContext} -> AbstractXmlApplicationContext
+
+
+ClassPathXmlApplicationContext -> AbstractRefreshableApplicationContext(DefaultListableBeanFactory(beanDefinitionMap) -> BeanDefinitionRegistry)
+-> AbstractApplicationContext
+
+constructor -> refresh()
+
+
+DefaultBeanDefinitionDocumentReader -> registerBeanDefinitions() Process the given bean element, parsing the bean definition and registering it with the registry
