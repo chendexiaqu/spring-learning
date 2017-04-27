@@ -1,4 +1,4 @@
-package com.github.chendexiaqu.common;
+package com.github.chendexiaqu.configuration;
 
 import com.github.chendexiaqu.model.HelloBean;
 import com.github.chendexiaqu.model.NiceBean;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.github.chendexiaqu.model")
+@ComponentScan("com.github.chendexiaqu.component")
 public class AppConfiguration {
 
     @Bean

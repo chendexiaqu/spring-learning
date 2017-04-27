@@ -5,17 +5,34 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:annotation-config/>
-    <context:component-scan base-package="com.github.chendexiaqu"/>
-    <bean id="helloBean" class="com.github.chendexiaqu.model.HelloBean">
+    <!--Make the container context allow you to use annotation-->
+    <!--<context:annotation-config/>-->
+
+    <!--This one include the annotation-config setting if spring scan the the annotations
+    under this base-package, it will register these classes to bean.
+    @Service,@Component,@Repository,@Controller
+    -->
+    <!--<context:component-scan base-package="com.github.chendexiaqu"/>-->
+
+
+    <bean id="helloBean" name="test1,test2" class="com.github.chendexiaqu.model.HelloBean">
         <property name="info" value="say hello to the world"/>
     </bean>
+
     <bean id="constructorBean" class="com.github.chendexiaqu.model.ConstructorBean">
-        <constructor-arg
+        <constructor-arg name="info" value="say Hello to the world"/>
     </bean>
+
     <bean id="niceBean"  class="com.github.chendexiaqu.model.NiceBean">
         <constructor-arg ref="helloBean"/>
     </bean>
+
     <bean id="abcBean" class="com.github.chendexiaqu.factory.AbcBeanFactory" factory-method="getInstance"/>
+
+    <!-- interesting -->
+    <bean id="myCar" lazy-init="true" class="com.github.chendexiaqu.lifecycle.Car" init-method="myInit" destroy-method="myDestroy">
+        <property name="brand" value="QQ"/>
+        <property name="maxSpeed" value="200"/>
+    </bean>
 
 </beans>

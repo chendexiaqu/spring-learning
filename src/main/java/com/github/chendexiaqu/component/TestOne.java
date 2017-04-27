@@ -1,12 +1,10 @@
-package com.github.chendexiaqu.model;
+package com.github.chendexiaqu.component;
 
-public class ConstructorBean {
+import org.springframework.stereotype.Component;
 
+@Component
+public class TestOne {
     private String info;
-
-    public ConstructorBean(String info) {
-        this.info = info;
-    }
 
     public String getInfo() {
         return info;
@@ -18,7 +16,7 @@ public class ConstructorBean {
 
     @Override
     public String toString() {
-        return "ConstructorBean{" +
+        return "TestOne{" +
                 "info='" + info + '\'' +
                 '}';
     }
