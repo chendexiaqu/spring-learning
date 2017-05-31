@@ -10,21 +10,21 @@ import org.springframework.core.io.Resource;
 
 public class BeanLifeCycle {
     public static void lifeCycleInBeanFactory(String xmlPath, String beanId) {
-//        Resource res = new ClassPathResource(xmlPath);
-//        BeanFactory context = new XmlBeanFactory(res);
+        Resource res = new ClassPathResource(xmlPath);
+        BeanFactory context = new XmlBeanFactory(res);
 
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
+//        AbstractApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
 
 //        context.refresh();
 
         //Register MyBeanPostProcessor
 
-        context.getBeanFactory().addBeanPostProcessor(new MyBeanPostProcessor());
-//        ((ConfigurableBeanFactory) context).addBeanPostProcessor(new MyBeanPostProcessor());
+//        context.getBeanFactory().addBeanPostProcessor(new MyBeanPostProcessor());
+        ((ConfigurableBeanFactory) context).addBeanPostProcessor(new MyBeanPostProcessor());
         //Register MyInstantiationAwareBeanPostProcessor
 
-        context.getBeanFactory().addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
-//        ((ConfigurableBeanFactory) context).addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+//        context.getBeanFactory().addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+        ((ConfigurableBeanFactory) context).addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
 
         //First time get car，Tell system to initialize Bean, lifecycle happens
 
@@ -39,8 +39,8 @@ public class BeanLifeCycle {
 
         System.out.println("car1==car2：" + (car1 == car2));
         //close
-//        ((XmlBeanFactory) context).destroySingletons();
-        context.destroy();
+        ((XmlBeanFactory) context).destroySingletons();
+//        context.destroy();
     }
 
 }

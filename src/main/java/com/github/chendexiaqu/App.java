@@ -38,6 +38,7 @@ public class App {
         ApplicationContext context = new FileSystemXmlApplicationContext("classpath:beans.xml");
         HelloBean helloBean = (HelloBean) context.getBean("helloBean");
         NiceBean niceBean = (NiceBean) context.getBean("niceBean");
+//        Object testOne = context.getBean("testOne");
         Object abcBean = context.getBean("abcBean");
         System.out.println(abcBean);
     }
